@@ -1,18 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://omp0gx3mys01"]
+[gd_scene load_steps=6 format=3 uid="uid://omp0gx3mys01"]
 
 [ext_resource type="Texture2D" uid="uid://dn34kjvcqc5jf" path="res://icon.svg" id="1_vetuk"]
 [ext_resource type="PackedScene" uid="uid://b217rbx5r3ked" path="res://Scenes/Characters/roger.tscn" id="2_sty7o"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="3_hi7b2"]
+[ext_resource type="PackedScene" uid="uid://ch8k4dmt30i4l" path="res://Scenes/Characters/crabby.tscn" id="4_iiyli"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ko04r"]
 size = Vector2(128, 128)
 
 [node name="Node2D" type="Node2D"]
-
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Hello"
 
 [node name="Floor" type="Sprite2D" parent="."]
 position = Vector2(576, 602)
@@ -25,7 +21,13 @@ texture = ExtResource("1_vetuk")
 shape = SubResource("RectangleShape2D_ko04r")
 
 [node name="Roger" parent="." instance=ExtResource("2_sty7o")]
-position = Vector2(546, 529)
+position = Vector2(580, 529)
 
 [node name="Player" type="Node" parent="Roger"]
 script = ExtResource("3_hi7b2")
+
+[node name="Crabby" parent="." instance=ExtResource("4_iiyli")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(579, 492)
+zoom = Vector2(3, 3)

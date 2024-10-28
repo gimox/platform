@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch8k4dmt30i4l"]
+
+[ext_resource type="Texture2D" uid="uid://ba0o7n4xe76t4" path="res://Treasure Hunters/The Crusty Crew/Sprites/Crabby/01-Idle/Idle 01.png" id="1_beqom"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nkmoj"]
+radius = 11.0
+height = 22.0
+
+[node name="Crabby" type="CharacterBody2D"]
+position = Vector2(538, 529)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_beqom")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_nkmoj")
