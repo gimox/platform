@@ -4,12 +4,16 @@ extends CharacterBody2D
 @export var _speed : float = 8
 @export var _acceleration : float = 16
 @export var _deceleration : float = 32
+@export var _is_face_left : bool = true
 
 @export_category("Jump")
 @export var _jump_height : float = 2.5
 @export var _air_control : float = 0.5
 @export var _jump_dust  : PackedScene
 var _jump_velocity : float
+
+@export_category("Addon")
+@export var _hasDust : bool = true
 
 @onready var _sprite : Sprite2D = $Sprite2D
 
@@ -29,10 +33,16 @@ func _ready():
 #region Public Methods
 
 func face_left() -> void:
-	_sprite.flip_h  = true
+	if _is_face_left == true:
+		_sprite.flip_h  = true
+	else:
+		_sprite.flip_h = false
 	
 func face_right() -> void:
-	_sprite.flip_h  = false
+	if _is_face_left == true:
+		_sprite.flip_h  = false
+	else:
+		_sprite.flip_h  = true
 	
 func run(direction : float):
 	_direction = direction
@@ -40,7 +50,8 @@ func run(direction : float):
 func jump():
 	if is_on_floor():
 		velocity.y = _jump_velocity
-		_spawn_dust(_jump_dust)
+		if _hasDust == true:
+			_spawn_dust(_jump_dust)
 		
 func stop_jump():
 	if velocity.y < 0:
